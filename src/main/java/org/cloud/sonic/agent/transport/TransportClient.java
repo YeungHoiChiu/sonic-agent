@@ -306,14 +306,6 @@ public class TransportClient extends WebSocketClient {
                         runIOSStep(jsonObject);
                     }
                 }
-                case "debugStep" -> {
-                    if (jsonObject.getInteger("pf") == PlatformType.ANDROID) {
-                        debugAndroidStep(jsonObject);
-                    }
-                    if (jsonObject.getInteger("pf") == PlatformType.IOS) {
-                        debugIOSStep(jsonObject);
-                    }
-                }
                 case "suite" -> {
                     List<JSONObject> cases = jsonObject.getJSONArray("cases").toJavaList(JSONObject.class);
                     TestNG tng = new TestNG();
@@ -448,13 +440,4 @@ public class TransportClient extends WebSocketClient {
         DevicesLockMap.unlockAndRemoveByUdId(udId);
         log.info("ios unlock udId：{}", udId);
     }
-
-    private void debugAndroidStep(JSONObject jsonObject) {
-
-    }
-
-    private void debugIOSStep(JSONObject jsonObject){
-
-    }
-
 }
